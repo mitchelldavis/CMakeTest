@@ -1,0 +1,6 @@
+cmake_minimum_required (VERSION 2.6)
+project(CPPTests)
+EXEC_PROGRAM(git ARGS clone https://github.com/joyent/libuv.git libuv)
+EXEC_PROGRAM(python libuv ARGS gyp_uv.py -f make)
+EXEC_PROGRAM(make ARG -C libuv/out)
+add_executable(main src/main.cpp)
